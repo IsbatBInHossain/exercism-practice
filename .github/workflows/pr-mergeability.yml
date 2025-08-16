@@ -23,7 +23,8 @@ jobs:
       - run: npm ci || npm install
 
       - name: Check mergeability (event PR or sweep)
-        run: node .github/scripts/check-mergeable.mjs
+        working-directory: ${{ github.workspace }}
+        run: node .github/scripts/check-mergeable.js
         env:
           GH_TOKEN: ${{ secrets.BOT_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
